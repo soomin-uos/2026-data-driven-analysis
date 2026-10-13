@@ -21,6 +21,8 @@
 |:---:|---|---|---|
 | W02 | [`Week02/`](Week02) | SVD · PCA · POD, Fourier · Wavelet (Ch.1–2) | A. 절단 SVD를 자기 사진에 적용 · B. Code 1.10 변형(잡음별 경판정 vs 누적합) · D. CNT FRC 주기응답 스냅샷 행렬의 SVD/POD, V_AC 앙상블에서 isola 탄생–소멸 시각화 |
 | W04 | [`Week04/`](Week04) | 희소성 · 압축센싱 · 희소회귀 · 모델선택 (Ch.3–4) | 1. §3.5 LASSO 예제 재현(LS · LASSO CV/1-SE · de-bias · STLSQ) · 2. 배포 풀이 오류 7건 찾기 · 3. CNT 운동방정식의 희소 복원(STLSQ, CV·AIC·BIC, 외삽·잡음 실험) |
+| W05 | [`Week05/`](Week05) | 동적 모드 분해 DMD (Ch.7.1–7.2, ℓ₁·CVX 보충) | 1. 원기둥 후류 DMD(r=21) 그림 5·표 재현 + CVX 설치 확인(`w05_cvx_check.m`)과 Code 3.2 ℓ₁ 풀이 비교 · 3. CNT 공진기 과도응답의 지연좌표 DMD — SVHT 랭크, 고유값→주파수·감쇠비(선형화·Hill–Floquet 대조), 외삽, 한계 |
+| W06 | [`Week06/`](Week06) | Koopman 연산자 · 확장 DMD (Ch.7.4–7.5) | 1. (7.82) 계의 사전 D1–D4 eDMD(표 5·그림 11–12) · 2. 배포 풀이 오류 6건 · 3. CNT 공진기 과도응답의 eDMD — 가진 고조파·Floquet 지수 복원, 닫히지 않는 항, 여러 끌개 한계 |
 
 ### Week02 — SVD · POD
 - `W02_SVD_POD.ipynb` — 과제 1회차 Part A
@@ -31,6 +33,14 @@
 - `W04_SparseRegression.ipynb` — 과제 1회차 Part B
 - 같은 HBM 데이터에서 x, ẋ, ẍ를 해석적으로 재구성하고 16개 후보항 라이브러리로 STLSQ. main 가지에서 참 모델의 6항을 계수 오차 10⁻⁸로 복원, isola 가지는 HBM 절단 잔차(1.5 %) 때문에 실패하는 이유를 분석.
 
+### Week05 — DMD
+- `W05_DMD.ipynb` — 과제 2회차 Part A
+- `w05_cvx_check.m`, `w05_code32_data.mat`, `w05_cvx_result.mat` — MATLAB CVX 설치 확인과 basis pursuit 풀이(노트북이 읽어 비교)
+- 원기둥 후류 데이터 `VORTALL.mat`(103 MB)은 용량 제한으로 미포함 — `dynamicslab/databook_python/DATA/`에서 받아 노트북 폴더에 두면 1(b)가 실행됨
+
+### Week06 — Koopman · eDMD
+- `W06_Koopman_eDMD.ipynb` — 과제 2회차 Part B
+- `w06_solution_bugs.m` — 문제 2의 배포 풀이 원문
 ---
 
 ## 실행 환경
