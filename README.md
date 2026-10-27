@@ -23,6 +23,7 @@
 | W04 | [`Week04/`](Week04) | 희소성 · 압축센싱 · 희소회귀 · 모델선택 (Ch.3–4) | 1. §3.5 LASSO 예제 재현(LS · LASSO CV/1-SE · de-bias · STLSQ) · 2. 배포 풀이 오류 7건 찾기 · 3. CNT 운동방정식의 희소 복원(STLSQ, CV·AIC·BIC, 외삽·잡음 실험) |
 | W05 | [`Week05/`](Week05) | 동적 모드 분해 DMD (Ch.7.1–7.2, ℓ₁·CVX 보충) | 1. 원기둥 후류 DMD(r=21) 그림 5·표 재현 + CVX 설치 확인(`w05_cvx_check.m`)과 Code 3.2 ℓ₁ 풀이 비교 · 3. CNT 공진기 과도응답의 지연좌표 DMD — SVHT 랭크, 고유값→주파수·감쇠비(선형화·Hill–Floquet 대조), 외삽, 한계 |
 | W06 | [`Week06/`](Week06) | Koopman 연산자 · 확장 DMD (Ch.7.4–7.5) | 1. (7.82) 계의 사전 D1–D4 eDMD(표 5·그림 11–12) · 2. 배포 풀이 오류 6건 · 3. CNT 공진기 과도응답의 eDMD — 가진 고조파·Floquet 지수 복원, 닫히지 않는 항, 여러 끌개 한계 |
+| W07 | [`Week07/`](Week07) | SINDy · HAVOK (§7.3, §7.5) | 1. b02 cubic oscillator에서 DMD·eDMD·SINDy의 new IC 오차와 λ 다섯 값의 항 수 표, b03 Lorenz(Code 7.5) p.278 출력표·new IC 오차 재현, 손계산 예 1·3 검산 · 3. CNT 공진기 과도응답(W06 경우 A)에 SINDy — derivative 두 가지(중심차분/평활)×잡음 비교, library 근거(다항×고조파 vs 물리항 포함), λ sweep knee + 훈련 밖 IC 검증, W06 DMD·eDMD와 표 3 비교, x(t) 하나의 HAVOK |
 
 ### Week02 — SVD · POD
 - `W02_SVD_POD.ipynb` — 과제 1회차 Part A
@@ -42,6 +43,10 @@
 - `W06_Koopman_eDMD.ipynb` — 과제 2회차 Part B
 - `w06_solution_bugs.m` — 문제 2의 배포 풀이 원문
 ---
+
+### Week07 — SINDy · HAVOK
+- `W07_SINDy_HAVOK.ipynb` — 과제 3회차 Part A (문항 2 제외)
+- 같은 CNT 모델의 강제 과도응답에 물리항 F = V²/(y_PI−x)^0.68을 후보로 넣은 library로 SINDy를 돌리면 7항으로 운동방정식이 계수까지 복원되고(test 오차 10⁻⁶, 훈련 밖 큰 진폭에서도 10⁻⁵), 다항 library(50열)는 전기력 급수 절단 때문에 sparse하지 않아 외삽에 실패. HAVOK은 x(t) 하나로 iΩ_d(주기해)와 Floquet 쌍 −0.084 ± 3.394i(W06과 일치)를 되찾음. 외부 데이터 불필요(식을 적분해 생성).
 
 ## 실행 환경
 
